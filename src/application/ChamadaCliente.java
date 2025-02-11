@@ -20,7 +20,7 @@ public class ChamadaCliente {
                         ===== DC CREAD =====
                         1 - Adicionar Cliente
                         2 - Buscar Cliente
-                        3 - Exibir Fila
+                        3 - Exibir Clientes
                         4 - Sair
                         Escolha uma opção:
                         """));
