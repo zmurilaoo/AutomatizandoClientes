@@ -8,9 +8,12 @@ public class Cliente {
     public Cliente() {
 
     }
-    public  Cliente(String nome, String cpf, String prioridade) {
+    public  Cliente(String nome, String cpf) {
         this.nome = nome;
         this.cpf = cpf;
+    }
+
+    public Cliente(String prioridade) {
         this.prioridade = prioridade;
     }
 
