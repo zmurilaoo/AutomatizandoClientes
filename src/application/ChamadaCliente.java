@@ -1,6 +1,7 @@
 package application;
 
 import model.entities.Cliente;
+import model.entities.Emprestimo;
 import model.entities.GerenciamentoCliente;
 
 import javax.swing.*;
@@ -11,17 +12,21 @@ import java.util.PriorityQueue;
 public class ChamadaCliente {
     public static void main(String[] args) {
         List<Cliente> clientes =  new ArrayList<>();
+        List<Emprestimo>emprestimo =  new ArrayList<>();
         GerenciamentoCliente gerenciamentoCliente = new GerenciamentoCliente();
+        Emprestimo cadastrarEmp = new Emprestimo();
 
         while (true) {
             try {
                 int opcao = Integer.parseInt(JOptionPane.showInputDialog(
                         """
+                        
                         ===== DC CREAD =====
                         1 - Adicionar Cliente
                         2 - Buscar Cliente
                         3 - Exibir Clientes
-                        4 - Sair
+                        4 - Cadastrar Emprestimo
+                        5 - Sair
                         Escolha uma opção:
                         """));
 
@@ -29,7 +34,8 @@ public class ChamadaCliente {
                     case 1 -> gerenciamentoCliente.adicionarCliente(clientes);
                     case 2 -> gerenciamentoCliente.buscarCliente(clientes);
                     case 3 -> JOptionPane.showMessageDialog(null, clientes.toString());
-                    case 4 -> {
+                    case 4 -> cadastrarEmp.adicionarEmprestimo(emprestimo, clientes);
+                    case 5 -> {
                         JOptionPane.showMessageDialog(null, "Encerrando o sistema...");
                         return;
                     }

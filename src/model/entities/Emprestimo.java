@@ -1,18 +1,22 @@
 package model.entities;
 
-import model.services.ProcessarTaxa;
+
 
 import javax.swing.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Emprestimo extends ProcessarTaxa {
+public class Emprestimo  {
     private Cliente cliente;
     List<Emprestimo> emprestimos = new ArrayList<>();
     private Double valor;
     private LocalDate dataInicio;
     private LocalDate dataFinal;
+
+    public Emprestimo() {
+
+    }
 
     public Emprestimo(Cliente cliente, Double valor, LocalDate dataInicio, LocalDate dataFinal) {
         this.cliente = cliente;
@@ -61,7 +65,7 @@ public class Emprestimo extends ProcessarTaxa {
         this.dataFinal = dataFinal;
     }
 
-    public void adicionarEmprestimo(Emprestimo emprestimo, Cliente cliente, List<Cliente> clientes) {
+    public void adicionarEmprestimo(List<Emprestimo>emprestimo, List<Cliente> clientes) {
         String escolha = JOptionPane.showInputDialog("Você está cadastrado? (Sim/Não)");
 
         while (escolha.equalsIgnoreCase("Sim")) {
@@ -70,8 +74,8 @@ public class Emprestimo extends ProcessarTaxa {
             for (int i = 0; i < clientes.size(); i++) {
                 if (nome.equalsIgnoreCase(clientes.get(i).getNome())) {
                     double valor = Double.parseDouble(JOptionPane.showInputDialog("Digite o valor do empréstimo:"));
-                    emprestimo.setValor(valor);
-                    JOptionPane.showMessageDialog(null, "Empréstimo cadastrado com sucesso para " + nome + " no valor de R$ " + valor);
+                    JOptionPane.showMessageDialog(null,"Empréstimo cadastrado com sucesso!!");
+                    JOptionPane.showMessageDialog(null, "Foi feito um emprestimo para Sr(a) " + nome + " no valor de R$" + String.format("%.3f", valor));
                     return;
                 }
             }
@@ -82,31 +86,5 @@ public class Emprestimo extends ProcessarTaxa {
 
         JOptionPane.showMessageDialog(null, "Você precisa se cadastrar antes de solicitar um empréstimo.");
     }
-    
-
-    public void buscarEmprestimo(Cliente cliente) {
-
-
-
-    }
-
-    public double calcularEmprestimo(Emprestimo emprestimo, int meses) {
-        if (meses <= 0) {
-            throw new IllegalArgumentException("O número de meses deve ser maior que zero.");
-        }
-
-        ProcessarTaxa py = new ProcessarTaxa();
-        double contaBasica = emprestimo.getValor() / meses;
-        double total = 0.0;
-
-        for (int i = 0; i < meses; i++) {
-            double juros = py.juros(contaBasica, i);
-            double taxa = py.taxaPagamento(contaBasica);
-            total += contaBasica + juros + taxa;
-        }
-
-        return total;
-    }
-
 
 }

@@ -31,7 +31,7 @@ public class GerenciamentoCliente {
             JOptionPane.showMessageDialog(null, "Cliente adicionado com sucesso!");
 
         } catch (IllegalArgumentException e) {
-            JOptionPane.showMessageDialog(null, "Erro: " + e.getMessage());
+            JOptionPane.showMessageDialog(null,   e.getMessage());
         }
     }
 
@@ -47,8 +47,8 @@ public class GerenciamentoCliente {
 
             for (int i = 0; i < clientes.size(); i++) {
                 if (clientes.get(i).getCpf().equals(cliente.cpf)){
-                    JOptionPane.showMessageDialog(null,"Usuário encontrado: " +
-                            " "  +" Nome:  "+  clientes.get(i).getNome() + " CPF:" + clientes.get(i).getCpf());
+                    JOptionPane.showMessageDialog(null,"Usuário encontrado.");
+                    JOptionPane.showMessageDialog(null, "Nome:  "+  clientes.get(i).getNome() + "/ CPF:" + clientes.get(i).getCpf());
                     return;
                 }else {
                     JOptionPane.showMessageDialog(null, "Usuário não encontrado...");
